@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
-  <img src="https://imgur.com/a/np3kXi1.png" alt="Project logo"></a>
+  <img src="https://i.imgur.com/ecJTRZh.png" alt="Project logo"></a>
 </p>
 <h3 align="center">Chatify 3.0</h3>
 
@@ -21,16 +21,13 @@
 
 ## 📝 Table of Contents
 
-- [Problem Statement](#problem_statement)
-- [Idea / Solution](#idea)
-- [Dependencies / Limitations](#limitations)
-- [Future Scope](#future_scope)
-- [Setting up a local environment](#getting_started)
-- [Usage](#usage)
-- [Technology Stack](#tech_stack)
-- [Contributing](../CONTRIBUTING.md)
+- [Alpha](#problem_statement)
+- [Discord](#idea)
+- [3.0?](#limitations)
+- [The Furture](#future_scope)
+- [Status](#usage)
+- [Built With](#tech_stack)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
 
 ## ⚠️ALPHA BUILD <a name = "problem_statement"></a>
 
