@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- 
+  <img src="https://imgur.com/a/np3kXi1.png" alt="Project logo"></a>
 </p>
 <h3 align="center">Chatify 3.0</h3>
 
