@@ -7,8 +7,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)]( https://discord.gg/pYwXZNUqru)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)]( https://discord.gg/pYwXZNUqru)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
 </div>
@@ -40,6 +40,7 @@ If you are interested in more information about the Chatify 3.0 alpha, you can v
 There are many different chats on the Chatify Discord.
 You can, for example, suggest new features, report bugs or just chat.
 You will also be informed about the latest news about Chatify on the Discord.
+https://discord.gg/pYwXZNUqru
 
 ## ❓ Why 3.0? <a name = "limitations"></a>
 
