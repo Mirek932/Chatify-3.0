@@ -1,11 +1,19 @@
-const form = document.getElementById('messageInput');
-const sendButton = document.getElementById('sendButton');
-
+//const form = document.getElementById('messageInput') as HTMLInputElement;
+//const sendButton = document.getElementById('sendButton') as HTMLButtonElement;
 // Nachricht senden, wenn der Button geklickt wird
-sendButton.addEventListener('click', () => {
-  const message = form.value;
-  if (message) {
-    socket.emit('chat message', message);  // Nachricht an den Server senden
-    form.value = '';  // Eingabefeld leeren
-  }
-});
+class buttons {
+    constructor(variables) {
+        this.variables = variables;
+        this.IniziliseButtons();
+    }
+    IniziliseButtons() {
+        this.variables.sendButton.addEventListener('click', () => {
+            const message = this.variables.form.value;
+            if (message) {
+                this.variables.socket.emit('chat message', message); // Nachricht an den Server senden
+                this.variables.form.value = ''; // Eingabefeld leeren
+            }
+        });
+    }
+}
+export default buttons;

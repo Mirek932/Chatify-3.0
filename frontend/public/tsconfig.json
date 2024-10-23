@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES6",                 // JavaScript-Version, auf die kompiliert wird
+      "module": "ES6",             // Modulstandard, z.B. CommonJS für Node.js
+      "moduleResolution": "node",
+      "strict": true,                   // Aktiviert strikte Typüberprüfung
+      "esModuleInterop": true,          // Ermöglicht den Import von CommonJS-Modulen
+      "outDir": "./js",               // Wohin der kompilierten Code geht
+      "rootDir": "./ts",               // Wo sich dein Quellcode befindet
+      "skipLibCheck": true              // Überspringt die Prüfung von .d.ts-Dateien
+    },
+    "include": ["ts/**/*", "js/bundle.js", "../../webpack.config.js"],
+    "exclude": ["node_modules"]
+  }
+  

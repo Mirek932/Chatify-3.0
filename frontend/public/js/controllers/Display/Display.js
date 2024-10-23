@@ -1,12 +1,11 @@
-const messages = document.getElementById('messages');
-
-function DisplayNewMessage(messageContent, messageCreator, time)
-{
-    const li = document.createElement('li');
-    li.textContent = messageContent;
-    messages.appendChild(li);
+class display {
+    DisplayNewMessage(messageContent, messages, messageCreator, time) {
+        const li = document.createElement('li');
+        li.textContent = messageContent;
+        messages.appendChild(li);
+    }
+    DeleteAllMessages(messages) {
+        messages.innerHTML = "";
+    }
 }
-function DeleteAllMessages()
-{
-    messages.innerHTML = "";
-}
+export default display;

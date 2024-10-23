@@ -1,3 +1,4 @@
+"use strict";
 let Email = "example@example.com";
-let Username= "Client-Tanaka";
-let Password="1234";
+let Username = "Client-Tanaka";
+let Password = "1234";

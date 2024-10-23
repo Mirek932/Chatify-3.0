@@ -2,6 +2,7 @@ import { readFileSync, statSync, writeFileSync } from "fs";
 import message from "../Messages/Message";
 import IMessage from "../Messages/interfaces/IMessage";
 import channel from "../Channel/channel";
+import { error } from "console";
 
 class storagemanagement {
     //When inizilised Load all Files that are in the definied things
@@ -41,7 +42,7 @@ class storagemanagement {
         const index: number = fragments.findIndex((ele)=>{ele === fragment});
         if(index === -1)
         {
-            console.error(`There is no [${fragment}] in [${key}]`);
+            console.error(`GFN: There is no [${fragment}] in [${key}]`);
             return -1;
         }
         return index;
@@ -54,7 +55,7 @@ class storagemanagement {
         const index: number = fragments.findIndex((ele)=>{ele.name === fragment});
         if(index === -1)
         {
-            console.error(`There is no [${fragment}] in [${key}]`);
+            console.error(`GFNBN: There is no [${fragment}] in [${key}]`);
             return -1;
         }
         return index;
@@ -72,6 +73,12 @@ class storagemanagement {
     }
     public ReplaceFragmentByName(key: string, oldChannel: string, toReplace: channel)
     {
+        if(this.GetFragmentNumberByName(key, oldChannel) === -1)
+        {
+            console.log("The Channel dosnt exist yet. Creating an new one!")
+            this.AddToFragment(key, toReplace);
+            return;
+        }
         this.Fragments[key][this.GetFragmentNumberByName(key, oldChannel)] = toReplace;
     }
     public GetFragment(key: string, index: number)

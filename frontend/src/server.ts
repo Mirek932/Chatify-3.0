@@ -13,6 +13,7 @@ import message from './controllers/Messages/Message';
 import { Socket } from 'dgram';
 import channel from './controllers/Channel/channel';
 import user from './controllers/Account/User';
+import Colors from './controllers/Colors/Colors';
 
 const wymws = new WYMWS();
 const encrypt = new Encrypt();
@@ -20,6 +21,7 @@ const save = new Save();
 const paths = new Paths();
 const stm = new storagemanagement();
 var MainChannel = new channel("Hub");
+const colors = new Colors();
 
 function InitPathes()
 {
@@ -65,17 +67,19 @@ function DeleteAllMessages(channel:channel)
     }
   });
 }
+
 var Users: {[id: string]:user} = {};
 // WebSocket-Verbindungen verwalten
 io.on('connection', (socket) => {
-  console.log('Ein Benutzer ist verbunden.');
+  colors.log(colors.FgGray + socket.id);
   //Load All Messages
   LaodAllMessages(socket);
   //Ask the socket for the username
   socket.emit("Get User");
   socket.on("Submit User", (name: string, passcode: string, email: string) =>{
     var newUser:user = new user(name, passcode, email);
-    Users[socket.id] = newUser;
+    Users[name] = newUser;
+    colors.log(`${socket.id} got ${name}`);
   });
 
   /*
@@ -90,15 +94,13 @@ io.on('connection', (socket) => {
 
   });
   // Nachricht vom Client empfangen
-  socket.on('chat message', (msg: string, channel:channel = MainChannel) => {
-    console.log('Nachricht empfangen:', msg);
-    var newMessage = new message(msg, Users[socket.id].Name, "-0:00", channel.name);
+  socket.on('chat message', (msg: string, author: string, channel:channel = MainChannel) => {
+    colors.log(colors.FgGray + `Recived Message: ${msg} finding ${author} with id ${socket.id}`);
+    var newMessage = new message(msg, Users[author].Name, "-0:00", channel.name);
     newMessage.Check();
     channel.SendMessage(newMessage);
     stm.ReplaceFragmentByName("messages", channel.name, channel);
     stm.SaveFragmentToFile("messages", paths.getPath("messages"));
-
-    console.log(stm.GetWholeFragment("msg_Content"));
     
     // Nachricht an alle Clients senden
     //io.emit('chat message', msg);
@@ -117,11 +119,11 @@ io.on('connection', (socket) => {
     /*
     IMPORTANT: REMOVE IF YOU SUPPORT CHATROOMS
     */
-    console.log('Ein Benutzer['+socket.id+'] hat die Verbindung getrennt.');
+    colors.log(colors.BgGray + `The user ${socket.id} left`);
   });
 });
 
 // Server starten
 server.listen(port, () => {
-  console.log(`Server läuft auf http://localhost:${port}`);
+  colors.log(colors.Bright+ `Server läuft auf http://localhost:${port}`);
 });
