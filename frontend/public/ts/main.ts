@@ -8,11 +8,13 @@ import socketmessages from "./controllers/Messages/SocketMessages";
 import variables from "./controllers/Files/Variables";
 import buttons from "./controllers/Interaction/SendButton";
 import accountDetails from "./controllers/Account/AccountDetails";
+import channel from "./controllers/Channel/channel";
 
 const messages:HTMLElement = document.getElementById('messages')!;
 const socket = io();  // Verbindet sich automatisch mit dem Server
+const Channel = new channel();
 const Display = new display();
 const Variables: variables = new variables(form, sendButton, socket);
 const AccountDetails: accountDetails = new accountDetails();
 const Buttons: buttons = new buttons(Variables, AccountDetails);
-const socketMessages: socketmessages = new socketmessages(Display, messages, AccountDetails);
+const socketMessages: socketmessages = new socketmessages(Display, messages, AccountDetails, Channel);

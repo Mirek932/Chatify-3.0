@@ -6,7 +6,7 @@ const WYMWS_1 = __importDefault(require("../Checking/WYMWS"));
 var wymws = new WYMWS_1.default();
 class message {
     constructor(content, author, time, chnl) {
-        this.Content = `<${author} | ${time}>` + content;
+        this.Content = content;
         this.Author = author;
         this.Time = time;
         this.Channel = chnl || "MainChannel";
@@ -23,7 +23,7 @@ class message {
         return this.Author;
     }
     get content() {
-        return this.Content;
+        return `<${this.Author}|${this.Time}>` + this.Content;
     }
     get time() {
         return this.Time; //

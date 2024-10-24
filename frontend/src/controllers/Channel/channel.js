@@ -12,12 +12,12 @@ class channel {
     }
     UpdateSocket(socket) {
         this.messages.forEach((ele) => {
-            socket.emit("chat message", ele.content);
+            socket.emit("chat message", ele.content, this.name);
         });
     }
     UpdateAllClients(msg) {
         this.onlineSockets.forEach((ele) => {
-            ele.emit("chat message", msg);
+            ele.emit("chat message", msg, this.name);
         });
     }
     OnlineMember(sct) {

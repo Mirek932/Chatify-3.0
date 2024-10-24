@@ -18,13 +18,13 @@ class channel{
     public UpdateSocket(socket:Socket)
     {
         this.messages.forEach((ele)=>{
-            socket.emit("chat message", ele.content);
+            socket.emit("chat message", ele.content, this.name);
         });
     }
     UpdateAllClients(msg:string)
     {
         this.onlineSockets.forEach((ele:Socket)=>{
-            ele.emit("chat message", msg);
+            ele.emit("chat message", msg, this.name);
         })
     }
     public OnlineMember(sct:Socket)

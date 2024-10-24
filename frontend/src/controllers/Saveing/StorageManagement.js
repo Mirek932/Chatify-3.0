@@ -39,9 +39,9 @@ class storagemanagement {
         var fragments = this.Fragments[key];
         if (fragment == null)
             throw new Error(`The fragments of key [${key}] are not definied!`);
-        const index = fragments.findIndex((ele) => { ele === fragment; });
+        const index = fragments.findIndex((ele) => ele === fragment);
         if (index === -1) {
-            console.error(`There is no [${fragment}] in [${key}]`);
+            console.error(`GFN: There is no [${fragment}] in [${key}]`);
             return -1;
         }
         return index;
@@ -50,9 +50,9 @@ class storagemanagement {
         var fragments = this.Fragments[key];
         if (fragment == null)
             throw new Error(`The fragments of key [${key}] are not definied!`);
-        const index = fragments.findIndex((ele) => { ele.name === fragment; });
+        const index = fragments.findIndex((ele) => ele.name === fragment);
         if (index === -1) {
-            console.error(`There is no [${fragment}] in [${key}]`);
+            console.error(`GFNBN: There is no [${fragment}] in [${key}]`);
             return -1;
         }
         return index;
@@ -61,12 +61,19 @@ class storagemanagement {
         if (!this.Fragments[key])
             // Falls das Fragment nicht existiert, initialisiere es als leeres Array
             throw new Error("The given key[" + key + "] dosnt exist!");
+        console.log(`Adding to [${key}](mostly messages) to the Fragments with the channel name: ${content.name}`);
         this.Fragments[key].push(content);
+        console.log(`success fully added it here is ${key}:  ${this.Fragments[key][this.GetFragmentNumberByName(key, content.name)]}`);
     }
     ReplaceFragment(key, oldChannel, toReplace) {
         this.Fragments[key][this.GetFragmentNumber(key, oldChannel)] = toReplace;
     }
     ReplaceFragmentByName(key, oldChannel, toReplace) {
+        if (this.GetFragmentNumberByName(key, oldChannel) === -1) {
+            console.log(`The Channel ${oldChannel} dosnt exist in the key ${key} yet. Creating an new one!`);
+            this.AddToFragment(key, toReplace);
+            return;
+        }
         this.Fragments[key][this.GetFragmentNumberByName(key, oldChannel)] = toReplace;
     }
     GetFragment(key, index) {
@@ -121,7 +128,7 @@ class storagemanagement {
             messages: channel.messages
         })), null, 2); // Serialisiere die Nachrichten als JSON
         (0, fs_1.writeFileSync)(filePath, jsonData); // Schreibe in die Datei
-        console.log(`Fragment ${key} gespeichert in ${filePath}`);
+        console.log(`Dass Fragment ${key} gespeichert in ${filePath}`);
     }
     // Diese Methode lädt ein Fragment von einer JSON-Datei
     LoadFragmentFromFile(key, filePath) {
@@ -139,7 +146,7 @@ class storagemanagement {
             var newChannel = new channel_1.default(ele.name);
             var newMessages = [];
             ele.messages.forEach((msg) => {
-                var newMessage = new Message_1.default(msg.Content, msg.Author, msg.Time); //Important is that it is uppercase because it is also in the string
+                var newMessage = new Message_1.default(msg.Content, msg.Author, msg.Time); //Important is that it(Content) is uppercase because it is also in the string
                 newMessages.push(newMessage);
             });
             newChannel.messages = newMessages;

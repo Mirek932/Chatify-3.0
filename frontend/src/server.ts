@@ -10,10 +10,10 @@ import Save from './controllers/Saveing/Save';
 import Paths from './controllers/Saveing/Paths';
 import storagemanagement from './controllers/Saveing/StorageManagement';
 import message from './controllers/Messages/Message';
-import { Socket } from 'dgram';
 import channel from './controllers/Channel/channel';
 import user from './controllers/Account/User';
 import Colors from './controllers/Colors/Colors';
+import currentDate from './controllers/Date/CurrentDate';
 
 const wymws = new WYMWS();
 const encrypt = new Encrypt();
@@ -22,6 +22,7 @@ const paths = new Paths();
 const stm = new storagemanagement();
 var MainChannel = new channel("Hub");
 const colors = new Colors();
+const CurrentDate = new currentDate();
 
 function InitPathes()
 {
@@ -53,9 +54,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 function LaodAllMessages(socket: any)
 {
   socket.emit("delete all messages");
-  //stm.GetWholeFragment("messages").forEach(ele => {
-  //  socket.emit('chat message', ele.content);
-  //});
   MainChannel.UpdateSocket(socket);
 }
 function DeleteAllMessages(channel:channel)
@@ -96,7 +94,7 @@ io.on('connection', (socket) => {
   // Nachricht vom Client empfangen
   socket.on('chat message', (msg: string, author: string, channel:channel = MainChannel) => {
     colors.log(colors.FgGray + `Recived Message: ${msg} finding ${author} with id ${socket.id}`);
-    var newMessage = new message(msg, Users[author].Name, "-0:00", channel.name);
+    var newMessage = new message(msg, Users[author].Name, CurrentDate.FormatedCD, channel.name);
     newMessage.Check();
     channel.SendMessage(newMessage);
     stm.ReplaceFragmentByName("messages", channel.name, channel);

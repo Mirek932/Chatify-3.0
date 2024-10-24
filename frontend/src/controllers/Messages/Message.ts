@@ -12,7 +12,7 @@ class message implements IMessage{
     Time: string;
     private Channel: string;
     constructor (content: string, author: string, time: string, chnl?: string) {
-        this.Content = `<${author} | ${time}>` + content;
+        this.Content = content;
         this.Author = author;
         this.Time = time;
         this.Channel = chnl || "MainChannel";
@@ -29,7 +29,7 @@ class message implements IMessage{
         return this.Author;
       }
     get content() {
-        return this.Content;
+        return `<${this.Author}|${this.Time}>`+this.Content;
     }
     get time() {
         return this.Time;//

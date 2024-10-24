@@ -71,5 +71,5 @@ I don't know yet if I'll update this xD:
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@Mian](https://github.com/Mirek932) - Programmer and Desinger
-- [@Emilian](https://github.com/OnlyStudio-OF) - Ideas and Desinger
+- [@Mian](https://github.com/Mirek932) - Programmer, Desinger and Comunity Manager
+- [@Emilian](https://github.com/OnlyStudio-OF) - Comunity Manager and Desinger

@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "name": "Hub",
+    "messages": [
+      {
+        "Content": "Static",
+        "Author": "Client-Tanaka",
+        "Time": "1729778863355",
+        "Channel": "MainChannel"
+      },
+      {
+        "Content": "fck",
+        "Author": "Client-Tanaka",
+        "Time": "1729778916364",
+        "Channel": "MainChannel"
+      },
+      {
+        "Content": "fca",
+        "Author": "Client-Tanaka",
+        "Time": "1704067200000",
+        "Channel": "MainChannel"
+      },
+      {
+        "Content": "was",
+        "Author": "Client-Tanaka",
+        "Time": "4.9.2024 function getHours() { [native code] }:15",
+        "Channel": "MainChannel"
+      },
+      {
+        "Content": "was",
+        "Author": "Client-Tanaka",
+        "Time": "4.9.2024 16:16",
+        "Channel": "NotHub lol"
+      }
+    ]
+  }
+]
